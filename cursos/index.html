@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../src/img/favicon.png">
+    <title>Cursos</title>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- Google icons -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../src/css/style.css">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <style>
+        body {
+            background-color: #111827;
+        }
+
+        html,
+        body {
+        height: 100%;
+        }
+    
+        @media (min-width: 640px) {
+        table {
+            display: inline-table !important;
+        }
+    
+        thead tr:not(:first-child) {
+            display: none;
+        }
+        }
+    
+        td:not(:last-child) {
+        border-bottom: 0;
+        }
+    
+        th:not(:last-child) {
+        border-bottom: 2px solid rgba(0, 0, 0, .1);
+        }
+    </style>
+</head>
+
+<body class="flex">
+
+     <!-- Sidebar -->
+<aside class="h-full w-16 flex flex-col space-y-10 items-center justify-center relative bg-gray-800 text-white">
+    
+    <!-- Logo la em cima -->
+    <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white">
+        <img src="../src/img/favicon.png" alt="">
+    </div>
+
+    <!-- Home -->
+    <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white">
+        <img src="../src/img/favicon.png" alt="">
+    </div>
+
+    <!-- User -->
+    <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white">
+        <img src="../src/img/favicon.png" alt="">
+    </div>
+
+    <!-- Configuration -->
+    <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white">
+        <img src="../src/img/favicon.png" alt="">
+    </div>
+
+    <!-- Logout la embaixo -->
+    <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white">
+        <img src="../src/img/favicon.png" alt="">
+    </div>
+</aside>
+
+	<div class="container mt-3 ml-6">
+		<table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
+			<thead class="text-white">
+				<tr class="bg-slate-500 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+					<th class="p-3 text-left">Nome</th>
+					<th class="p-3 text-left">Plataforma</th>
+					<th class="p-3 text-left">Data inicio</th>
+					<th class="p-3 text-left">Data fim</th>
+					<th class="p-3 text-left">Status</th>
+					<th class="p-3 text-left" width="110px">Actions</th>
+				</tr>
+				<tr class="bg-slate-500 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+					<th class="p-3 text-left">Nome</th>
+					<th class="p-3 text-left">Plataforma</th>
+					<th class="p-3 text-left">Data inicio</th>
+					<th class="p-3 text-left">Data fim</th>
+					<th class="p-3 text-left">Status</th>
+					<th class="p-3 text-left" width="110px">Actions</th>
+				</tr>
+                <tr class="bg-slate-500 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                    <th class="p-3 text-left">Nome</th>
+					<th class="p-3 text-left">Plataforma</th>
+					<th class="p-3 text-left">Data inicio</th>
+					<th class="p-3 text-left">Data fim</th>
+					<th class="p-3 text-left">Status</th>
+                  <th class="p-3 text-left" width="110px">Actions</th>
+              </tr>
+                <tr class="bg-slate-500 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                    <th class="p-3 text-left">Nome</th>
+					<th class="p-3 text-left">Plataforma</th>
+					<th class="p-3 text-left">Data inicio</th>
+					<th class="p-3 text-left">Data fim</th>
+					<th class="p-3 text-left">Status</th>
+                  <th class="p-3 text-left" width="110px">Actions</th>
+              </tr>
+			</thead>
+			<tbody class="flex-2 sm:flex-none">
+				<tr class="flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 bg-white">
+					<td class="border-grey-light p-3">John Covv</td>
+					<td class="border-grey-light p-3 truncate">contato@johncovv.com</td>
+                    <td class="border-grey-light p-3">John Covv</td>
+                    <td class="border-grey-light p-3">John Covv</td>
+                    <td class="border-grey-light p-3">Finalizado</p></td>
+					<td class="border-grey-light p-3 flex gap-4 text-xl">
+                        <i class="fa-solid fa-pen-to-square cursor-pointer text-neutral-700	hover:text-neutral-900"></i> 
+                        <i class="fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer"></i>
+                    </td>
+				</tr>
+				<tr class="flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 bg-white">
+					<td class="border-grey-light p-3">John Covv</td>
+					<td class="border-grey-light p-3 truncate">contato@johncovv.com</td>
+                    <td class="border-grey-light p-3">John Covv</td>
+                    <td class="border-grey-light p-3">John Covv</td>
+                    <td class="border-grey-light p-3">Finalizado</p></td>
+					<td class="border-grey-light p-3 flex gap-4 text-xl">
+                        <i class="fa-solid fa-pen-to-square cursor-pointer text-neutral-700	hover:text-neutral-900"></i> 
+                        <i class="fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer"></i>
+                    </td>
+				</tr>
+                <tr class="flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 bg-white">
+					<td class="border-grey-light p-3">John Covv</td>
+					<td class="border-grey-light p-3 truncate">contato@johncovv.com</td>
+                    <td class="border-grey-light p-3">John Covv</td>
+                    <td class="border-grey-light p-3">John Covv</td>
+                    <td class="border-grey-light p-3">Finalizado</p></td>
+					<td class="border-grey-light p-3 flex gap-4 text-xl">
+                        <i class="fa-solid fa-pen-to-square cursor-pointer text-neutral-700	hover:text-neutral-900"></i> 
+                        <i class="fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer"></i>
+                    </td>
+				</tr>
+                <tr class="flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 bg-white">
+					<td class="border-grey-light p-3">John Covv</td>
+					<td class="border-grey-light p-3 truncate">contato@johncovv.com</td>
+                    <td class="border-grey-light p-3">John Covv</td>
+                    <td class="border-grey-light p-3">John Covv</td>
+                    <td class="border-grey-light p-3">Finalizado</p></td>
+					<td class="border-grey-light p-3 flex gap-4 text-xl">
+                        <i class="fa-solid fa-pen-to-square cursor-pointer text-neutral-700	hover:text-neutral-900"></i> 
+                        <i class="fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer"></i>
+                    </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>
