@@ -1,33 +1,28 @@
 var objeto = new Object();
 var json = JSON.stringify(objeto);
 
-function listarInversores() {
+function listarCursos() {
   $.ajax({
-    url: '../app/api/InversoresListar.php',
-    type: 'post',
-    headers: { 'Authorization': 'Bearer ' + TOKEN },
-    data: json,
+    url: 'http://localhost:8000/cursos',
+    type: 'get',
+    // headers: { 'Authorization': 'Bearer ' + TOKEN },
+    // data: json,
     beforeSend: function () {
       console.log('ajax...');
       $('.load').css("display", "flex");
-
     },
   })
     .done(function (msg) {
 
       $('.load').css("display", "none");
 
-      // retorno ok
-
       console.log(msg);
 
       var conteudo = msg;
 
-      // var conteudo = JSON.parse(msg);
+      var conteudo = JSON.parse(msg);
 
-      // console.log(dadosAPI1);
-
-      // console.log(Object.keys(dadosAPI1).length);
+      console.log(conteudo.data);
 
       var qtd = Object.keys(conteudo).length;
 
@@ -37,13 +32,14 @@ function listarInversores() {
 
       while (x < qtd) {
         var id = conteudo[x].id;
-        var uc = conteudo[x].uc;
-        var grupo = conteudo[x].grupo;
-        var unidade = conteudo[x].unidade;
-        var potencia = conteudo[x].potencia;
+        var nome = conteudo[x].nome;
+        var plataforma = conteudo[x].plataforma;
+        var data_inicio = conteudo[x].data_inicio;
+        var data_fim = conteudo[x].data_fim;
+        var status = conteudo[x].status;
         
         text += "<tr>";
-        text+= "<input type='hidden' id='uc_hidden' value="+uc+">";
+        text += "<input type='hidden' id='uc_hidden' value="+uc+">";
         text += "<td class='texto_tabela_esquerda'>" + grupo + "</td>";
         text += "<td class='texto_tabela_esquerda'>" + unidade + "</td>";
         text += "<td class='texto_tabela_centro' id='nome_usuario" + x + "'>" + potencia + "</td>";
@@ -53,23 +49,17 @@ function listarInversores() {
         x++;
       }
 
-      var text1 = qtd + " usuário(s) consultado(s)...";
-
-      document.getElementById("listar_inversores").innerHTML = text;
-      document.getElementById("qtd_inversores").innerHTML = text1;
+      document.getElementById("listar_cursos").innerHTML = text;
     })
     .fail(function (jqXHR, textStatus, msg) {
 
       $('.load').css("display", "none");
 
-      var text = "";
+      var text = "Nenhum registro consultado...";
 
-      var text1 = "Nenhum registro consultado...";
+      document.getElementById("listar_cursos").innerHTML = text;
 
-      document.getElementById("listar_inversores").innerHTML = text;
-      document.getElementById("qtd_inversores").innerHTML = text1;
-
-      console.log('Erro ao listar inversores');
+      console.log('Erro ao listar cursos');
     })
 }
-listarInversores()
+listarCursos()
