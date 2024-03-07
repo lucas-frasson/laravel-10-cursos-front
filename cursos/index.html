@@ -24,6 +24,9 @@
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
+    <!-- Javascript Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+
     <style>
         body {
             background-color: #111827;
@@ -59,9 +62,12 @@
      <!-- Sidebar -->
 <aside class="h-full w-16 flex flex-col items-center justify-between relative bg-gray-800 text-white">
     
-    <!-- Logo la em cima -->
     <div class="mt-4">
-        <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+        <div data-tooltip-target="tooltip-home" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+            <div id="tooltip-home" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Home
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
             <a href="../cursos/">
                 <img src="../src/img/favicon.png" alt="">
             </a>
@@ -69,29 +75,53 @@
     </div>
     
     <div class="flex flex-col justify-between gap-6">
-
         <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
-            <a href="../cursos/">
-                <img src="../src/img/cursos.png" alt="">
-            </a>
+            <div data-tooltip-target="tooltip-cursos" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+                <div id="tooltip-cursos" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Cursos
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <a href="../cursos/">
+                    <img src="../src/img/cursos.png" alt="">
+                </a>
+            </div>
         </div>
 
         <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
-            <a href="../usuarios/">
-                <img src="../src/img/users.png" alt="">
-            </a>
+            <div data-tooltip-target="tooltip-usuarios" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+                <div id="tooltip-usuarios" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Usuários
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <a href="../usuarios/">
+                    <img src="../src/img/users.png" alt="">
+                </a>
+            </div>
         </div>
 
+
         <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
-            <a href="../config/">
-                <img src="../src/img/config.png" alt="">
-            </a>
+            <div data-tooltip-target="tooltip-config" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+                <div id="tooltip-config" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Configurações
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <a href="../config/">
+                    <img src="../src/img/config.png" alt="">
+                </a>
+            </div>
         </div>
     </div>
 
     <div class="mb-5">
         <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
-            <img src="../src/img/sair.png" alt="">
+            <div data-tooltip-target="tooltip-sair" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+                <div id="tooltip-sair" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Sair
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <img src="../src/img/sair.png" alt="">
+            </div>
         </div>
     </div>
 </aside>
@@ -109,7 +139,7 @@
 				</tr>
 			</thead>
 			<tbody class="flex-2 sm:flex-none" id="listar_cursos">
-				<tr class="flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 bg-white hover:bg-gray-200">
+				<!-- <tr class="flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 bg-white hover:bg-gray-200">
 					<td class="border-grey-light p-3">John Covv</td>
 					<td class="border-grey-light p-3">contato@johncovv.com</td>
                     <td class="border-grey-light p-3">John Covv</td>
@@ -119,12 +149,15 @@
                         <i class="fa-solid fa-pen-to-square cursor-pointer text-neutral-700	hover:text-neutral-900"></i> 
                         <i class="fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer"></i>
                     </td>
-				</tr>
+				</tr> -->
 			</tbody>
 		</table>
 	</div>
 
     <script src="../src/js/listar_cursos.js" defer></script>
+
+    <!-- Javascript Tailwind -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 
 </html>

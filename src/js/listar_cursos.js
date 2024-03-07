@@ -9,42 +9,48 @@ function listarCursos() {
     // data: json,
     beforeSend: function () {
       console.log('ajax...');
-      $('.load').css("display", "flex");
+      // $('.load').css("display", "flex");
     },
   })
     .done(function (msg) {
 
-      $('.load').css("display", "none");
+      // $('.load').css("display", "none");
 
       console.log(msg);
 
-      var conteudo = msg;
+      // var conteudo = JSON.parse(msg);
 
-      var conteudo = JSON.parse(msg);
-
-      console.log(conteudo.data);
-
-      var qtd = Object.keys(conteudo).length;
+      var qtd = Object.keys(msg).length;
 
       var x = 0;
 
       var text = "";
 
       while (x < qtd) {
-        var id = conteudo[x].id;
-        var nome = conteudo[x].nome;
-        var plataforma = conteudo[x].plataforma;
-        var data_inicio = conteudo[x].data_inicio;
-        var data_fim = conteudo[x].data_fim;
-        var status = conteudo[x].status;
-        
-        text += "<tr>";
-        text += "<input type='hidden' id='uc_hidden' value="+uc+">";
-        text += "<td class='texto_tabela_esquerda'>" + grupo + "</td>";
-        text += "<td class='texto_tabela_esquerda'>" + unidade + "</td>";
-        text += "<td class='texto_tabela_centro' id='nome_usuario" + x + "'>" + potencia + "</td>";
-        text += "<td class='img_tabela'><a class='btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal4'><img src='../src/img/editar-codigo.png' alt='editar' data-editar-inversor='" + id + "' data-bs-toggle='tooltip' data-bs-placement='left' id='editar_inversor' data-bs-title='Editar'></a></td>";
-        text += "<td class='tabela_tabela' id='tabela_tabela'><a class='btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal2'> <img src='../src/img/excluir.png' alt='excluir' data-excluir-inversor='" + id + "' data-bs-toggle='tooltip' data-bs-placement='left' id='excluir_inversor' data-bs-title='Excluir'></a></td>";
+        var conteudo = msg.data[x];
+        var id = conteudo.id;
+        var nome = conteudo.nome;
+        var plataforma = conteudo.plataforma;
+        var data_inicio = conteudo.data_inicio;
+        var data_fim = conteudo.data_fim;
+        var status = conteudo.status;
+
+        if(data_fim == null) {
+          data_fim = '-';
+        }
+
+        var status = status == 'c' ? 'Cursando' : 'Finalizado';
+
+        text += "<tr class='flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 bg-white hover:bg-gray-200'>";
+				text += "<td class='border-grey-light p-3'>"+ nome +"</td>";
+				text +=	"<td class='border-grey-light p-3'>"+ plataforma +"</td>";
+        text +=	"<td class='border-grey-light p-3'>"+ data_inicio +"</td>";
+        text +=	"<td class='border-grey-light p-3'>"+ data_fim +"</td>";
+        text +=	"<td class='border-grey-light p-3'>"+ status +"</p></td>";
+				text +=	"<td class='border-grey-light p-3 flex gap-4 text-xl'>";
+        text +=	"<i class='fa-solid fa-pen-to-square cursor-pointer text-neutral-700 hover:text-neutral-900'></i>";
+        text +=	"<i class='fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer'></i>";
+        text +=	"</td>";
         text += "</tr>";
         x++;
       }
@@ -53,7 +59,7 @@ function listarCursos() {
     })
     .fail(function (jqXHR, textStatus, msg) {
 
-      $('.load').css("display", "none");
+      // $('.load').css("display", "none");
 
       var text = "Nenhum registro consultado...";
 
