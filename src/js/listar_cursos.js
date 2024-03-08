@@ -2,6 +2,10 @@ var objeto = new Object();
 var json = JSON.stringify(objeto);
 
 function listarCursos() {
+
+  $("#edit-modal").addClass("hidden");
+  $("#delete-modal").addClass("hidden");
+
   $.ajax({
     url: 'http://localhost:8000/cursos',
     type: 'get',
@@ -39,8 +43,8 @@ function listarCursos() {
           <td class='border-grey-light p-3'>${data_fim}</td>
           <td class='border-grey-light p-3'>${status}</td>
           <td class='border-grey-light p-3 flex gap-4 text-xl'>
-            <i class='fa-solid fa-pen-to-square cursor-pointer text-neutral-700 hover:text-neutral-900'></i>
-            <i class='fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer'></i>
+            <i id='editar_curso' class='fa-solid fa-pen-to-square cursor-pointer text-neutral-700 hover:text-neutral-900'></i>
+            <i id='deletar_curso' data-modal-target="delete-modal" data-modal-toggle="delete-modal" class='fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer'></i>
           </td>
         </tr>`;
         x++;
