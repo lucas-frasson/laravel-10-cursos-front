@@ -3,7 +3,7 @@ $(document).on('click', '#novo_curso', function () {
     var modal = $("#create-modal");
   
     $("#create-modal").removeClass("hidden");
-  
+
     modal.show();
 });
 
@@ -24,7 +24,13 @@ $(document).on('click', '#cadastrar_curso', function () {
 
     // Verificar se algum dos campos está vazio
     if (curso.trim() === '' || plataforma.trim() === '' || data_inicio.trim() === ''){
-        alert('Preencha todos os campos antes de enviar a requisição.');
+
+        // Mensagem de alerta
+        $("#alert").removeClass("hidden");
+
+        setTimeout(() => {
+            $("#alert").addClass("hidden");
+        }, 3000)
     } else {
 
     // Se nenhum campo estiver vazio, criar o objeto e fazer a requisição AJAX
@@ -44,12 +50,12 @@ $(document).on('click', '#cadastrar_curso', function () {
         headers: {'Content-Type': 'application/json'},
         data: json,
         beforeSend: function () {
-            // $('.load').css("display", "flex");
+            $("#loading").removeClass("hidden");
         },
     })
         .done(function (msg) {
 
-            // $('.load').css("display", "none");
+            $("#loading").addClass("hidden");
 
             console.log(msg);
 
@@ -63,34 +69,27 @@ $(document).on('click', '#cadastrar_curso', function () {
 
             listarCursos();
 
-            // var text = "Inversor cadastrado com sucesso!";
+            // Mensagem de sucesso
+            $("#success").removeClass("hidden");
 
-            // document.getElementById("jmalerta").innerHTML = text;
-
-            // $('.jmalerta').css("background-color", "rgba(36, 70, 4, 0.8)");
-            // $('.jmalerta').css("display", "block");
-
-            // setTimeout(() => {
-            //     $('.jmalerta').css("display", "none");
-            // }, 2000)
+            setTimeout(() => {
+                $("#success").addClass("hidden");
+            }, 3000)
 
         })
         .fail(function (jqXHR, textStatus, msg) {
 
-            // $('.load').css("display", "none");
+            $("#loading").addClass("hidden");
 
             console.log('Erro');
 
-        //     var text = "Erro ao cadastrar inversor!";
+            // Mensagem de erro
+            $("#error").removeClass("hidden");
 
-        //     document.getElementById("jmalerta").innerHTML = text;
+            setTimeout(() => {
+                $("#error").addClass("hidden");
+            }, 3000)
 
-        //     $('.jmalerta').css("background-color", "rgba(158, 8, 8, 0.8)");
-        //     $('.jmalerta').css("display", "block");
-
-        //     setTimeout(() => {
-        //         $('.jmalerta').css("display", "none");
-        //     }, 2000)
         })
     }
 });

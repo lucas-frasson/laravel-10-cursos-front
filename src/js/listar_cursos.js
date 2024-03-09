@@ -11,15 +11,14 @@ function listarCursos() {
     url: 'http://localhost:8000/cursos',
     type: 'get',
     // headers: { 'Authorization': 'Bearer ' + TOKEN },
-    // data: json,
     beforeSend: function () {
       console.log('ajax...');
-      // $('.load').css("display", "flex");
+      $("#loading").removeClass("hidden");
     },
   })
     .done(function (msg) {
 
-      // $('.load').css("display", "none");
+      $("#loading").addClass("hidden");
 
       console.log(msg);
 
@@ -45,7 +44,7 @@ function listarCursos() {
               <td class='border-grey-light p-3'>${data_fim}</td>
               <td class='border-grey-light p-3'><span class='${cor} rounded-md'>${status_texto}</span></td>
               <td class='border-grey-light p-3 flex gap-4 text-xl'>
-                  <i id='editar_curso' data-id=${id} class='fa-solid fa-pen-to-square cursor-pointer text-neutral-700 hover:text-neutral-900'></i>
+                  <i id='editar_curso' data-id=${id} class='fa-solid fa-pen-to-square cursor-pointer text-neutral-500 hover:text-neutral-900'></i>
                   <i id='deletar_curso' data-id=${id} class='fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer'></i>
               </td>
           </tr>`);
@@ -58,9 +57,7 @@ function listarCursos() {
     })
     .fail(function (jqXHR, textStatus, msg) {
 
-      // $('.load').css("display", "none");
-
-      // var text = "Nenhum registro consultado...";
+      $("#loading").addClass("hidden");
 
       $("#listar_cursos").html(text);
 
