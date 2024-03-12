@@ -40,13 +40,10 @@ $(document).on('click', '#show_curso', function () {
         var data_inicio_formatada = formatarData(data_inicio);
         var data_fim_formatada = formatarData(data_fim);
 
-        var status = status == 'c' ? 'Cursando' : 'Finalizado';
-
         $('#edit-curso').val(nome);
         $('#edit-plataforma').val(plataforma);
         $('#edit-data_inicio').val(data_inicio_formatada);
         $('#edit-data_fim').val(data_fim_formatada);
-        $('#edit-status').val(status);
     })
     .fail(function (jqXHR, textStatus, msg) {
 
