@@ -260,7 +260,7 @@
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                         Editar Curso
                     </h3>
-                    <button id="close_editar_curso" type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                    <button id="close_show_curso" type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                         </svg>
@@ -270,6 +270,7 @@
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
                     <div class="space-y-4">
+                        <input type="hidden" name="hidden_id_curso" id="hidden_id_curso">
                         <div>
                             <label for="edit-curso" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome do Curso</label>
                             <input type="text" name="edit-curso" id="edit-curso" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Digite o nome do curso" required />
@@ -286,7 +287,7 @@
                             <label for="edit-data_fim" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data Fim</label>
                             <input type="date" name="edit-data_fim" id="edit-data_fim" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Digite a data que se iniciou o curso" required />
                         </div>
-                        <button class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <button id='editar_curso' class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Editar
                         </button>
                     </div>
@@ -324,6 +325,7 @@
     <!-- Javascript CRUD -->
     <script src="../src/js/listar_cursos.js" defer></script>
     <script src="../src/js/cadastrar_curso.js"></script>
+    <script src="../src/js/show_curso.js"></script>
     <script src="../src/js/editar_curso.js"></script>
     <script src="../src/js/deletar_curso.js"></script>
 

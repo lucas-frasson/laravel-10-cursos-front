@@ -44,7 +44,7 @@ function listarCursos() {
               <td class='border-grey-light p-3'>${data_fim}</td>
               <td class='border-grey-light p-3'><span class='${cor} rounded-md'>${status_texto}</span></td>
               <td class='border-grey-light p-3 flex gap-4 text-xl'>
-                  <i id='editar_curso' data-id=${id} class='fa-solid fa-pen-to-square cursor-pointer text-neutral-500 hover:text-neutral-900'></i>
+                  <i id='show_curso' data-id=${id} class='fa-solid fa-pen-to-square cursor-pointer text-neutral-500 hover:text-neutral-900'></i>
                   <i id='deletar_curso' data-id=${id} class='fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer'></i>
               </td>
           </tr>`);
