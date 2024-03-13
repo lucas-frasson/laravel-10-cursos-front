@@ -3,6 +3,10 @@ $(document).on('click', '#deletar_curso', function () {
     var modal = $("#delete-modal");
   
     $("#delete-modal").removeClass("hidden");
+
+    // Pegando id do curso
+    var id_curso = $(this).attr('data-id');
+    $('#hidden_delete_id_curso').val(id_curso);
   
     modal.show();
 });
@@ -15,3 +19,56 @@ $(document).on('click', '#close_deletar_curso', function () {
   
     modal.hide();
 });
+
+// Deletar Curso
+$(document).on('click', '#destroy_curso', function () {
+
+    var id_curso = $('#hidden_delete_id_curso').val();
+
+    $.ajax({
+        url: 'http://localhost:8000/cursos/' + id_curso,
+        type: 'delete',
+        // headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
+        headers: {'Content-Type': 'application/json'},
+        data: json,
+        beforeSend: function () {
+            $("#loading").removeClass("hidden");
+        },
+    })
+    .done(function (msg) {
+
+        $("#loading").addClass("hidden");
+
+        var modal = $("#edit-modal");
+  
+        $("#edit-modal").addClass("hidden");
+    
+        modal.hide();
+
+        listarCursos();
+
+        // Mensagem de sucesso
+        $("#success").removeClass("hidden");
+
+        setTimeout(() => {
+            $("#success").addClass("hidden");
+        }, 3000)
+
+    })
+    .fail(function (jqXHR, textStatus, msg) {
+
+        $("#loading").addClass("hidden");
+
+        console.log('Erro');
+
+        // Mensagem de erro
+        $("#error").removeClass("hidden");
+
+        setTimeout(() => {
+            $("#error").addClass("hidden");
+        }, 3000)
+    })
+
+});
+
+
