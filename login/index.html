@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../src/img/favicon.png">
+    <title>Login - Cursos</title>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- Google icons -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../src/css/style.css">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <!-- Javascript Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background-color: #111827;
+        }
+    </style>
+</head>
+<body>
+    <!-- Mensagem de erro -->
+    <div id="error" class="hidden flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <span id="error_mensagem" class="font-medium">Erro ao realizar login!</span>
+        </div>
+    </div>
+
+    <!-- Mensagem de alerta -->
+    <div id="alert" class="hidden flex items-center p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300 dark:border-yellow-800" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <span id="alert_mensagem" class="font-medium">Preencha todos os campos!</span>
+        </div>
+    </div>
+    
+    <div class="flex justify-center items-center mt-32">
+		<form class="p-10 bg-white rounded flex justify-center items-center flex-col shadow-md">
+			<img src="../src/img/favicon.png" alt="logo" class="w-40">
+			<p class="mb-5 text-3xl text-gray-600 font-bold mt-2">Meus Cursos</p>
+			<input type="email" id="email" name="email" class="mb-5 p-3 w-80 focus:border-purple-800 rounded border-2 outline-none" autocomplete="off" placeholder="Email" required>
+			<input type="password" id="password" name="password" class="mb-5 p-3 w-80 focus:border-purple-800 rounded border-2 outline-none" autocomplete="off" placeholder="Password" required>
+			<button class="bg-purple-800 hover:bg-purple-900 text-white font-bold p-2 rounded w-80" id="login"><span>Entrar</span></button>
+		</form>
+	</div>
+
+    <script src="../src/js/login.js"></script>
+</body>
+</html>
