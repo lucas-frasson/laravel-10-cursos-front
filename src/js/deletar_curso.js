@@ -78,7 +78,4 @@ $(document).on('click', '#destroy_curso', function () {
             $("#error").addClass("hidden");
         }, 3000)
     })
-
 });
-
-
