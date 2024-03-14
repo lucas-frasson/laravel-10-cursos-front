@@ -49,6 +49,10 @@ $(document).on('click', '#destroy_curso', function () {
 
         listarCursos();
 
+        var text = "Curso excluído com sucesso!";
+
+        $("#success_mensagem").html(text);
+
         // Mensagem de sucesso
         $("#success").removeClass("hidden");
 
@@ -62,6 +66,10 @@ $(document).on('click', '#destroy_curso', function () {
         $("#loading").addClass("hidden");
 
         console.log('Erro');
+
+        var text = "Erro ao excluir curso!";
+
+        $("#error_mensagem").html(text);
 
         // Mensagem de erro
         $("#error").removeClass("hidden");

@@ -52,6 +52,10 @@ $(document).on('click', '#show_curso', function () {
         $("#loading").addClass("hidden");
 
         console.log('Erro');
+        
+        var text = "Erro ao consultar curso!";
+
+        $("#error_mensagem").html(text);
 
         // Mensagem de erro
         $("#error").removeClass("hidden");

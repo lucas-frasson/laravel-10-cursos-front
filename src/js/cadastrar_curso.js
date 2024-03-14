@@ -25,6 +25,10 @@ $(document).on('click', '#cadastrar_curso', function () {
     // Verificar se algum dos campos está vazio
     if (curso.trim() === '' || plataforma.trim() === '' || data_inicio.trim() === ''){
 
+        var text = "Preencha todos os campos!";
+
+        $("#alert_mensagem").html(text);
+
         // Mensagem de alerta
         $("#alert").removeClass("hidden");
 
@@ -71,6 +75,10 @@ $(document).on('click', '#cadastrar_curso', function () {
 
             listarCursos();
 
+            var text = "Curso cadastrado com sucesso!";
+
+            $("#success_mensagem").html(text);
+
             // Mensagem de sucesso
             $("#success").removeClass("hidden");
 
@@ -85,13 +93,16 @@ $(document).on('click', '#cadastrar_curso', function () {
 
             console.log('Erro');
 
+            var text = "Erro ao cadastrar curso!";
+
+            $("#error_mensagem").html(text);
+
             // Mensagem de erro
             $("#error").removeClass("hidden");
 
             setTimeout(() => {
                 $("#error").addClass("hidden");
             }, 3000)
-
         })
     }
 });
