@@ -45,9 +45,7 @@ $(document).on('click', '#login', function () {
     
             console.log(msg);
 
-            // var conteudo = JSON.parse(msg);
-
-            const TOKEN = msg;
+            const TOKEN = (msg.token);
             
             localStorage.setItem("userEmail", email);
             // localStorage.setItem("userNome", nome);

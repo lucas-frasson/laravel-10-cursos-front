@@ -7,10 +7,13 @@ function listarCursos() {
   $("#edit-modal").addClass("hidden");
   $("#delete-modal").addClass("hidden");
 
+  // Pegando token do localStorage
+  var TOKEN = localStorage.getItem("userToken");
+
   $.ajax({
     url: 'http://localhost:8000/cursos',
     type: 'get',
-    // headers: { 'Authorization': 'Bearer ' + TOKEN },
+    headers: { 'Authorization': 'Bearer ' + TOKEN },
     beforeSend: function () {
       console.log('ajax...');
       $("#loading").removeClass("hidden");
@@ -21,8 +24,6 @@ function listarCursos() {
       $("#loading").addClass("hidden");
 
       // console.log(msg);
-
-      // var conteudo = JSON.parse(msg);
 
       var qtd = (msg.data).length;
 
@@ -58,6 +59,8 @@ function listarCursos() {
     .fail(function (jqXHR, textStatus, msg) {
 
       $("#loading").addClass("hidden");
+      
+      var text = "Nenhum curso encontrado";
 
       $("#listar_cursos").html(text);
 
