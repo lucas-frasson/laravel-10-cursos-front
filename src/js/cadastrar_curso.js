@@ -43,11 +43,13 @@ $(document).on('click', '#cadastrar_curso', function () {
     // Transformando objeto em json
     var json = JSON.stringify(objeto);
 
+    // Pegando token do localStorage
+    var TOKEN = localStorage.getItem("userToken");
+
     $.ajax({
         url: 'http://localhost:8000/cursos',
         type: 'post',
-        // headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
         data: json,
         beforeSend: function () {
             $("#loading").removeClass("hidden");
@@ -57,7 +59,7 @@ $(document).on('click', '#cadastrar_curso', function () {
 
             $("#loading").addClass("hidden");
 
-            console.log(msg);
+            // console.log(msg);
 
             $('#curso').val('');
             $('#plataforma').val('');

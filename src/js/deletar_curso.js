@@ -25,11 +25,13 @@ $(document).on('click', '#destroy_curso', function () {
 
     var id_curso = $('#hidden_delete_id_curso').val();
 
+    // Pegando token do localStorage
+    var TOKEN = localStorage.getItem("userToken");
+
     $.ajax({
         url: 'http://localhost:8000/cursos/' + id_curso,
         type: 'delete',
-        // headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
         data: json,
         beforeSend: function () {
             $("#loading").removeClass("hidden");

@@ -8,11 +8,13 @@ $(document).on('click', '#show_curso', function () {
     var id_curso = $(this).attr('data-id');
     $('#hidden_id_curso').val(id_curso);
 
+    // Pegando token do localStorage
+    var TOKEN = localStorage.getItem("userToken");
+
     $.ajax({
         url: 'http://localhost:8000/cursos/' + id_curso,
         type: 'get',
-        // headers: { 'Authorization': 'Bearer ' + TOKEN },
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
         beforeSend: function () {
           console.log('ajax...');
           $("#loading").removeClass("hidden");
@@ -22,7 +24,7 @@ $(document).on('click', '#show_curso', function () {
 
         $("#loading").addClass("hidden");
   
-        console.log(msg);
+        // console.log(msg);
 
         var { id, nome, plataforma, data_inicio, data_fim, status } = msg.data;
 

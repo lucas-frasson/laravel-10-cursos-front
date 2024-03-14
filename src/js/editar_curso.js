@@ -28,11 +28,13 @@ $(document).on('click', '#editar_curso', function () {
     // Transformando objeto em json
     var json = JSON.stringify(objeto);
 
+    // Pegando token do localStorage
+    var TOKEN = localStorage.getItem("userToken");
+
     $.ajax({
         url: 'http://localhost:8000/cursos/' + id_curso,
         type: 'patch',
-        // headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
         data: json,
         beforeSend: function () {
             $("#loading").removeClass("hidden");
