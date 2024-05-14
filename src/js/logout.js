@@ -27,16 +27,15 @@ $(document).on('click', '#logout', function () {
         $("#loading").addClass("hidden");
 
         console.log('Erro');
-
-        var text = "Erro ao deslogar!";
-
-        $("#error_mensagem").html(text);
+        console.log(msg);
 
         // Mensagem de erro
-        $("#error").removeClass("hidden");
-
-        setTimeout(() => {
-            $("#error").addClass("hidden");
-        }, 3000)
+        Swal.fire({
+            title: 'Erro',
+            text: 'Erro ao deslogar!',
+            icon: 'error',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#581C87'
+        })
     })
 });

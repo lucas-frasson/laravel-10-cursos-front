@@ -12,6 +12,11 @@ $(document).on('click', '#close_novo_curso', function () {
     var modal = $("#create-modal");
   
     $("#create-modal").addClass("hidden");
+
+    // Limpar campos
+    $('#curso').val('');
+    $('#plataforma').val('');
+    $('#data_inicio').val('');
   
     modal.hide();
 });
@@ -25,16 +30,14 @@ $(document).on('click', '#cadastrar_curso', function () {
     // Verificar se algum dos campos está vazio
     if (curso.trim() === '' || plataforma.trim() === '' || data_inicio.trim() === ''){
 
-        var text = "Preencha todos os campos!";
-
-        $("#alert_mensagem").html(text);
-
         // Mensagem de alerta
-        $("#alert").removeClass("hidden");
-
-        setTimeout(() => {
-            $("#alert").addClass("hidden");
-        }, 3000)
+        Swal.fire({
+            title: 'Atenção',
+            text: 'Preencha todos os campos!',
+            icon: 'info',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#581C87'
+        })
     } else {
 
     // Se nenhum campo estiver vazio, criar o objeto e fazer a requisição AJAX
@@ -65,6 +68,7 @@ $(document).on('click', '#cadastrar_curso', function () {
 
             // console.log(msg);
 
+            // Limpar campos
             $('#curso').val('');
             $('#plataforma').val('');
             $('#data_inicio').val('');
@@ -73,18 +77,16 @@ $(document).on('click', '#cadastrar_curso', function () {
   
             modal.hide();
 
-            listarCursos();
-
-            var text = "Curso cadastrado com sucesso!";
-
-            $("#success_mensagem").html(text);
-
             // Mensagem de sucesso
-            $("#success").removeClass("hidden");
+            Swal.fire({
+                title: 'Sucesso',
+                text: 'Curso cadastrado com sucesso!',
+                icon:'success',
+                confirmButtonText: 'Ok',
+                confirmButtonColor: '#581C87'
+            })
 
-            setTimeout(() => {
-                $("#success").addClass("hidden");
-            }, 3000)
+            listarCursos();
 
         })
         .fail(function (jqXHR, textStatus, msg) {
@@ -92,17 +94,16 @@ $(document).on('click', '#cadastrar_curso', function () {
             $("#loading").addClass("hidden");
 
             console.log('Erro');
-
-            var text = "Erro ao cadastrar curso!";
-
-            $("#error_mensagem").html(text);
+            console.log(msg);
 
             // Mensagem de erro
-            $("#error").removeClass("hidden");
-
-            setTimeout(() => {
-                $("#error").addClass("hidden");
-            }, 3000)
+            Swal.fire({
+                title: 'Erro',
+                text: 'Erro ao cadastrar curso!',
+                icon: 'error',
+                confirmButtonText: 'Ok',
+                confirmButtonColor: '#581C87'
+            })    
         })
     }
 });

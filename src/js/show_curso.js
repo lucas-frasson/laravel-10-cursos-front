@@ -52,17 +52,15 @@ $(document).on('click', '#show_curso', function () {
         $("#loading").addClass("hidden");
 
         console.log('Erro');
-        
-        var text = "Erro ao consultar curso!";
-
-        $("#error_mensagem").html(text);
 
         // Mensagem de erro
-        $("#error").removeClass("hidden");
-
-        setTimeout(() => {
-            $("#error").addClass("hidden");
-        }, 3000)
+        Swal.fire({
+            title: 'Erro',
+            text: 'Erro ao exibir curso!',
+            icon: 'error',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#581C87'
+        })
     })
   
     modal.show();

@@ -47,18 +47,16 @@ $(document).on('click', '#destroy_curso', function () {
     
         modal.hide();
 
-        listarCursos();
-
-        var text = "Curso excluído com sucesso!";
-
-        $("#success_mensagem").html(text);
-
         // Mensagem de sucesso
-        $("#success").removeClass("hidden");
+        Swal.fire({
+            title: 'Sucesso',
+            text: 'Curso excluído com sucesso!',
+            icon: 'success',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#581C87'
+        })
 
-        setTimeout(() => {
-            $("#success").addClass("hidden");
-        }, 3000)
+        listarCursos();
 
     })
     .fail(function (jqXHR, textStatus, msg) {
@@ -66,16 +64,15 @@ $(document).on('click', '#destroy_curso', function () {
         $("#loading").addClass("hidden");
 
         console.log('Erro');
-
-        var text = "Erro ao excluir curso!";
-
-        $("#error_mensagem").html(text);
+        console.log(msg);
 
         // Mensagem de erro
-        $("#error").removeClass("hidden");
-
-        setTimeout(() => {
-            $("#error").addClass("hidden");
-        }, 3000)
+        Swal.fire({
+            title: 'Erro',
+            text: 'Erro ao excluir curso!',
+            icon: 'error',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#581C87'
+        })
     })
 });

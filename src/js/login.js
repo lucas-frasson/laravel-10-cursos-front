@@ -1,7 +1,6 @@
 $(document).on('click', '#login', function () {
-    document.getElementById("login").addEventListener("click", function(event){
-        event.preventDefault();
-      });
+
+    event.preventDefault();
 
     var email = $('#email').val();
     var password = $('#password').val();
@@ -10,11 +9,13 @@ $(document).on('click', '#login', function () {
     if (email.trim() === '' || password.trim() === ''){
 
         // Mensagem de alerta
-        $("#alert").removeClass("hidden");
-
-        setTimeout(() => {
-            $("#alert").addClass("hidden");
-        }, 3000)
+        Swal.fire({
+            title: 'Atenção',
+            text: 'Preencha todos os campos!',
+            icon: 'info',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#581C87'
+        })
     } else {
 
         // Device name
@@ -60,11 +61,13 @@ $(document).on('click', '#login', function () {
             console.log('Erro');
     
             // Mensagem de erro
-            $("#error").removeClass("hidden");
-    
-            setTimeout(() => {
-                $("#error").addClass("hidden");
-            }, 3000)
+            Swal.fire({
+                title: 'Erro',
+                text: 'Erro ao realizar login!',
+                icon: 'error',
+                confirmButtonText: 'Ok',
+                confirmButtonColor: '#581C87'
+            })
         })
     }
 });

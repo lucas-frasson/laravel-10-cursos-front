@@ -9,83 +9,78 @@ $(document).on('click', '#editar_curso', function () {
     // Verificar se algum dos campos está vazio
     if (curso.trim() === '' || plataforma.trim() === '' || data_inicio.trim() === ''){
 
-        var text = "Preencha todos os campos!";
-
-        $("#alert_mensagem").html(text);
-
         // Mensagem de alerta
-        $("#alert").removeClass("hidden");
-
-        setTimeout(() => {
-            $("#alert").addClass("hidden");
-        }, 3000)
+        Swal.fire({
+            title: 'Atenção',
+            text: 'Preencha todos os campos obrigatórios!',
+            icon: 'info',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#581C87'
+        })
     } else {
 
-    // Se nenhum campo estiver vazio, criar o objeto e fazer a requisição AJAX
-    var objeto = {
-        nome: curso,
-        plataforma: plataforma,
-        data_inicio: data_inicio,
-        data_fim: data_fim
-    };
+        // Se nenhum campo estiver vazio, criar o objeto e fazer a requisição AJAX
+        var objeto = {
+            nome: curso,
+            plataforma: plataforma,
+            data_inicio: data_inicio,
+            data_fim: data_fim
+        };
 
-    // Transformando objeto em json
-    var json = JSON.stringify(objeto);
+        // Transformando objeto em json
+        var json = JSON.stringify(objeto);
 
-    // Pegando token do localStorage
-    var TOKEN = localStorage.getItem("userToken");
+        // Pegando token do localStorage
+        var TOKEN = localStorage.getItem("userToken");
 
-    $.ajax({
-        url: 'http://localhost:8000/cursos/' + id_curso,
-        type: 'patch',
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
-        data: json,
-        beforeSend: function () {
-            $("#loading").removeClass("hidden");
-        },
-    })
-    .done(function (msg) {
+        $.ajax({
+            url: 'http://localhost:8000/cursos/' + id_curso,
+            type: 'patch',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
+            data: json,
+            beforeSend: function () {
+                $("#loading").removeClass("hidden");
+            },
+        })
+        .done(function (msg) {
 
-        $("#loading").addClass("hidden");
+            $("#loading").addClass("hidden");
 
-        console.log(msg);
+            console.log(msg);
 
-        var modal = $("#edit-modal");
-  
-        $("#edit-modal").addClass("hidden");
+            var modal = $("#edit-modal");
     
-        modal.hide();
+            $("#edit-modal").addClass("hidden");
+        
+            modal.hide();
 
-        listarCursos();
+            // Mensagem de sucesso
+            Swal.fire({
+                title: 'Sucesso',
+                text: 'Curso editado com sucesso!',
+                icon: 'success',
+                confirmButtonText: 'Ok',
+                confirmButtonColor: '#581C87'
+            })
 
-        var text = "Curso editado com sucesso!";
+            listarCursos();
 
-        $("#success_mensagem").html(text);
+        })
+        .fail(function (jqXHR, textStatus, msg) {
 
-        // Mensagem de sucesso
-        $("#success").removeClass("hidden");
+            $("#loading").addClass("hidden");
 
-        setTimeout(() => {
-            $("#success").addClass("hidden");
-        }, 3000)
+            console.log('Erro');
+            console.log(msg);
 
-    })
-    .fail(function (jqXHR, textStatus, msg) {
-
-        $("#loading").addClass("hidden");
-
-        console.log('Erro');
-
-        var text = "Erro ao editar curso!";
-
-        $("#error_mensagem").html(text);
-
-        // Mensagem de erro
-        $("#error").removeClass("hidden");
-
-        setTimeout(() => {
-            $("#error").addClass("hidden");
-        }, 3000)
-    })
+            // Mensagem de erro
+            Swal.fire({
+                title: 'Erro',
+                text: 'Erro ao editar curso!',
+                icon: 'error',
+                confirmButtonText: 'Ok',
+                confirmButtonColor: '#581C87'
+            })
+        })
     }
 })
