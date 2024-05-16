@@ -55,6 +55,41 @@ function listarCursos() {
       var finalTable = tableRows.join('');
 
       $("#listar_cursos").html(finalTable);
+
+      // Inicializar DataTables após carregar os dados
+      $('#tabela_cursos').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "language": {
+            "sEmptyTable": "Nenhum registro encontrado",
+            "sInfo": "_TOTAL_ registros consultados",
+            "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+            "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+            "sInfoThousands": ".",
+            "sLengthMenu": "_MENU_ resultados por página",
+            "sLoadingRecords": "Carregando...",
+            "sProcessing": "Processando...",
+            "sZeroRecords": "Nenhum registro encontrado",
+            "sSearch": "Pesquisar ",
+            "oPaginate": {
+                "sNext": ">",
+                "sPrevious": "<",
+                "sFirst": "<<",
+                "sLast": ">>"
+            },
+            "oAria": {
+                "sSortAscending": ": Ordenar colunas de forma ascendente",
+                "sSortDescending": ": Ordenar colunas de forma descendente"
+            },
+            "select": {
+                "rows": {
+                    "_": "Selecionado %d linhas",
+                    "0": "Nenhuma linha selecionada",
+                    "1": "Selecionado 1 linha"
+                }
+            }
+        }
+      });
     })
     .fail(function (jqXHR, textStatus, msg) {
 

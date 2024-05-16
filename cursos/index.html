@@ -33,6 +33,10 @@
     <!-- Verifica auth -->
     <script src="../src/js/auth.js" defer></script>
 
+    <!-- DataTable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css" />
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+
     <style>
         body {
             background-color: #111827;
@@ -64,6 +68,40 @@
         th:not(:last-child) {
         border-bottom: 2px solid rgba(0, 0, 0, .1);
         }
+
+        /* DataTable */
+        div.dt-container div.dt-layout-cell.dt-start {
+            text-align: left;
+            color: darkgrey;
+        }
+
+        div.dt-container select.dt-input {
+            width: 3.9rem;
+        }
+
+        .dt-search {
+            color: darkgrey !important;
+        }
+
+        div.dt-container .dt-search input {
+            color: #374151 !important;
+            background-color: #F3F4F6;
+            border-radius: 0.5rem !important;
+        }
+
+        .dt-paging-button{
+            background-color: #64748B !important;
+        }
+
+        div.dt-container .dt-paging .dt-paging-button.disabled,div.dt-container .dt-paging .dt-paging-button.disabled:hover,div.dt-container .dt-paging .dt-paging-button.disabled:active {
+            color: #fff !important;
+        }
+
+        div.dt-container .dt-paging .dt-paging-button.current,div.dt-container .dt-paging .dt-paging-button.current:hover {
+            color: #fff !important;
+            background-color: rgba(128, 128, 128, 0.65) !important;
+        }
+
     </style>
 </head>
 
@@ -159,7 +197,7 @@
         </div>
 
         <!-- Tabela -->
-		<table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
+		<table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5" id="tabela_cursos">
 			<thead class="text-white">
 				<tr class="bg-slate-500 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
 					<th class="p-3 text-left">Nome</th>
@@ -171,17 +209,6 @@
 				</tr>
 			</thead>
 			<tbody class="flex-2 sm:flex-none" id="listar_cursos">
-				<!-- <tr class="flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 bg-white hover:bg-gray-200">
-					<td class="border-grey-light p-3">John Covv</td>
-					<td class="border-grey-light p-3">contato@johncovv.com</td>
-                    <td class="border-grey-light p-3">John Covv</td>
-                    <td class="border-grey-light p-3">John Covv</td>
-                    <td class="border-grey-light p-3">Finalizado</p></td>
-					<td class="border-grey-light p-3 flex gap-4 text-xl">
-                        <i class="fa-solid fa-pen-to-square cursor-pointer text-neutral-700	hover:text-neutral-900"></i> 
-                        <i class="fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer"></i>
-                    </td>
-				</tr> -->
 			</tbody>
 		</table>
 	</div>
