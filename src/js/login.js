@@ -15,7 +15,17 @@ $(document).on('click', '#login', function () {
             icon: 'info',
             confirmButtonText: 'Ok',
             confirmButtonColor: '#581C87'
-        })
+        });
+
+        // Pintar borda dos inputs email e password de vermelho
+        if (email.trim() === ''){
+            $('#email').css('border-color','red');
+        } 
+
+        if (password.trim() === ''){
+            $('#password').css('border-color','red');
+        }
+
     } else {
 
         // Device name

@@ -17,6 +17,11 @@ $(document).on('click', '#close_novo_curso', function () {
     $('#curso').val('');
     $('#plataforma').val('');
     $('#data_inicio').val('');
+
+    // Limpar borda dos inputs
+    $('#curso').css('border-color', '#ced4da');
+    $('#plataforma').css('border-color', '#ced4da');
+    $('#data_inicio').css('border-color', '#ced4da');
   
     modal.hide();
 });
@@ -37,7 +42,21 @@ $(document).on('click', '#cadastrar_curso', function () {
             icon: 'info',
             confirmButtonText: 'Ok',
             confirmButtonColor: '#581C87'
-        })
+        });
+
+        // Pintar borda dos inputs #curso, #plataforma e #data_inicio de vermelho se estiverem vazios
+        if (curso.trim() === ''){
+            $('#curso').css('border-color','red');
+        }
+
+        if (plataforma.trim() === ''){
+            $('#plataforma').css('border-color','red');
+        }
+
+        if (data_inicio.trim() === ''){
+            $('#data_inicio').css('border-color','red');
+        }
+
     } else {
 
     // Se nenhum campo estiver vazio, criar o objeto e fazer a requisição AJAX

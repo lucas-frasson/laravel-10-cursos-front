@@ -71,7 +71,12 @@ $(document).on('click', '#close_show_curso', function () {
     var modal = $("#edit-modal");
   
     $("#edit-modal").addClass("hidden");
-  
+
+    // Limpar borda dos inputs
+    $('#edit-curso').css('border-color', '#ced4da');
+    $('#edit-plataforma').css('border-color', '#ced4da');
+    $('#edit-data_inicio').css('border-color', '#ced4da');
+
     modal.hide();
 });
 

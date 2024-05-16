@@ -16,7 +16,18 @@ $(document).on('click', '#editar_curso', function () {
             icon: 'info',
             confirmButtonText: 'Ok',
             confirmButtonColor: '#581C87'
-        })
+        });
+
+        // Pintar borda dos inputs curso, plataforma e data_inicio de vermelho se estiverem vazios
+        if (curso.trim() === '') {
+            $('#edit-curso').css('border-color','red');
+        }
+        if (plataforma.trim() === '') {
+            $('#edit-plataforma').css('border-color','red');
+        }
+        if (data_inicio.trim() === '') {
+            $('#edit-data_inicio').css('border-color','red');
+        }
     } else {
 
         // Se nenhum campo estiver vazio, criar o objeto e fazer a requisição AJAX
