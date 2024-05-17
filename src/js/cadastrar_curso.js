@@ -115,14 +115,27 @@ $(document).on('click', '#cadastrar_curso', function () {
             console.log('Erro');
             console.log(msg);
 
-            // Mensagem de erro
-            Swal.fire({
-                title: 'Erro',
-                text: 'Erro ao cadastrar curso!',
-                icon: 'error',
-                confirmButtonText: 'Ok',
-                confirmButtonColor: '#581C87'
-            })    
+            // Verificando se o status http code é 422
+            if (jqXHR.status === 422) {
+                var response = JSON.parse(jqXHR.responseText);
+                // Mensagem de erro se já existir um curso com o mesmo nome
+                Swal.fire({
+                    title: 'Erro',
+                    text: response.error,
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: '#581C87'
+                });
+            } else {
+                // Trata outros possíveis erros
+                Swal.fire({
+                    title: 'Erro',
+                    text: 'Erro ao cadastrar curso!',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: '#581C87'
+                });
+            }
         })
     }
 });
