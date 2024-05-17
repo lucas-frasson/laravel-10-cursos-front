@@ -46,7 +46,7 @@ function listarCursos() {
               <td class='border-grey-light p-3'><span class='${cor} rounded-md p-1'>${status_texto}</span></td>
               <td class='border-grey-light p-3 flex gap-4 text-xl'>
                   <i id='show_curso' data-id=${id} class='fa-solid fa-pen-to-square cursor-pointer text-neutral-500 hover:text-neutral-900'></i>
-                  <i id='deletar_curso' data-id=${id} class='fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer'></i>
+                  <i id='deletar_curso' data-delete-id=${id} class='fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer btn_delete'></i>
               </td>
           </tr>`);
           x++;
@@ -62,21 +62,15 @@ function listarCursos() {
         "paging": false,
         "language": {
             "sEmptyTable": "Nenhum registro encontrado",
-            "sInfo": "_TOTAL_ registros consultados",
-            "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
-            "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+            "sInfo": "",
+            "sInfoEmpty": "",
+            "sInfoFiltered": "",
             "sInfoThousands": ".",
             "sLengthMenu": "_MENU_ resultados por página",
             "sLoadingRecords": "Carregando...",
             "sProcessing": "Processando...",
             "sZeroRecords": "Nenhum registro encontrado",
             "sSearch": "Pesquisar ",
-            "oPaginate": {
-                "sNext": ">",
-                "sPrevious": "<",
-                "sFirst": "<<",
-                "sLast": ">>"
-            },
             "oAria": {
                 "sSortAscending": ": Ordenar colunas de forma ascendente",
                 "sSortDescending": ": Ordenar colunas de forma descendente"
@@ -102,4 +96,6 @@ function listarCursos() {
       console.log('Erro ao listar cursos');
     })
 }
-listarCursos()
+
+// Listar cursos
+listarCursos();
