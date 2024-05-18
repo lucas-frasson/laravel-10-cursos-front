@@ -1,7 +1,15 @@
-var objeto = new Object();
-var json = JSON.stringify(objeto);
-
 function listarCursos() {
+
+  // Pegar email do localStorage
+  var email = localStorage.getItem("userEmail");
+
+  // Cria objeto com o email do usuário
+  var objeto = {
+    email: email
+  };
+
+  // Transformando objeto em json
+  var json = JSON.stringify(objeto);
 
   $("#create-modal").addClass("hidden");
   $("#edit-modal").addClass("hidden");
@@ -11,9 +19,10 @@ function listarCursos() {
   var TOKEN = localStorage.getItem("userToken");
 
   $.ajax({
-    url: 'http://localhost:8000/cursos',
-    type: 'get',
-    headers: { 'Authorization': 'Bearer ' + TOKEN },
+    url: 'http://localhost:8000/cursos/index',
+    type: 'post',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
+    data: json,
     beforeSend: function () {
       console.log('ajax...');
       $("#loading").removeClass("hidden");
@@ -79,7 +88,7 @@ function listarCursos() {
         "retrieve": true,
         "paging": false,
         "language": {
-            "sEmptyTable": "Nenhum registro encontrado",
+            "sEmptyTable": "Nenhum curso encontrado",
             "sInfo": "",
             "sInfoEmpty": "",
             "sInfoFiltered": "",
@@ -87,7 +96,7 @@ function listarCursos() {
             "sLengthMenu": "_MENU_ resultados por página",
             "sLoadingRecords": "Carregando...",
             "sProcessing": "Processando...",
-            "sZeroRecords": "Nenhum registro encontrado",
+            "sZeroRecords": "Nenhum curso encontrado",
             "sSearch": "Pesquisar ",
             "oAria": {
                 "sSortAscending": ": Ordenar colunas de forma ascendente",
@@ -111,6 +120,7 @@ function listarCursos() {
 
       $("#listar_cursos").html(text);
 
+      console.log(msg);
       console.log('Erro ao listar cursos');
     })
 }
