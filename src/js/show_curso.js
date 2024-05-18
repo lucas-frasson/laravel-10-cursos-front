@@ -46,6 +46,7 @@ $(document).on('click', '#show_curso', function () {
         $('#edit-plataforma').val(plataforma);
         $('#edit-data_inicio').val(data_inicio_formatada);
         $('#edit-data_fim').val(data_fim_formatada);
+        $('#edit-status').val(status);
     })
     .fail(function (jqXHR, textStatus, msg) {
 
@@ -76,6 +77,7 @@ $(document).on('click', '#close_show_curso', function () {
     $('#edit-curso').css('border-color', '#ced4da');
     $('#edit-plataforma').css('border-color', '#ced4da');
     $('#edit-data_inicio').css('border-color', '#ced4da');
+    $('#edit-data_fim').css('border-color', '#ced4da');
 
     modal.hide();
 });

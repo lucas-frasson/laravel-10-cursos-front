@@ -110,6 +110,7 @@
      <!-- Sidebar -->
 <aside class="h-full w-16 flex flex-col items-center justify-between relative bg-gray-800 text-white">
     
+    <!-- Home -->
     <div class="mt-4">
         <div data-tooltip-target="tooltip-home" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
             <div id="tooltip-home" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
@@ -122,6 +123,7 @@
         </div>
     </div>
     
+    <!-- Cursos -->
     <div class="flex flex-col justify-between gap-6">
         <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
             <div data-tooltip-target="tooltip-cursos" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
@@ -135,6 +137,7 @@
             </div>
         </div>
 
+        <!-- Usuários -->
         <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
             <div data-tooltip-target="tooltip-usuarios" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
                 <div id="tooltip-usuarios" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
@@ -147,6 +150,7 @@
             </div>
         </div>
 
+        <!-- Configurações -->
         <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
             <div data-tooltip-target="tooltip-config" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
                 <div id="tooltip-config" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
@@ -160,6 +164,7 @@
         </div>
     </div>
 
+    <!-- Sair -->
     <div class="mb-5">
         <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
             <div data-tooltip-target="tooltip-sair" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
@@ -233,18 +238,26 @@
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
                     <div class="space-y-4">
+
+                        <!-- Nome do Curso -->
                         <div>
                             <label for="curso" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome do Curso</label>
                             <input type="text" name="curso" id="curso" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Digite o nome do curso" required />
                         </div>
+
+                        <!-- Plataforma -->
                         <div>
                             <label for="plataforma" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Plataforma</label>
                             <input type="text" name="plataforma" id="plataforma" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Digite a plataforma do curso" required />
                         </div>
+
+                        <!-- Data de Início -->
                         <div>
                             <label for="data_inicio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data de Início</label>
                             <input type="date" name="data_inicio" id="data_inicio" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Digite a data que se iniciou o curso" required />
                         </div>
+
+                        <!-- Cadastrar -->
                         <button id="cadastrar_curso" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Cadastrar
                         </button>
@@ -274,23 +287,45 @@
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
                     <div class="space-y-4">
+
+                        <!-- id do Curso -->
                         <input type="hidden" name="hidden_id_curso" id="hidden_id_curso">
+
+                        <!-- Nome do Curso -->
                         <div>
                             <label for="edit-curso" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome do Curso</label>
                             <input type="text" name="edit-curso" id="edit-curso" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Digite o nome do curso" required />
                         </div>
+
+                        <!-- Plataforma -->
                         <div>
                             <label for="edit-plataforma" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Plataforma</label>
                             <input type="text" name="edit-plataforma" id="edit-plataforma" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Digite a plataforma do curso" required />
                         </div>
+
+                        <!-- Status -->
+                        <div>
+                            <label for="edit-status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                            <select name="edit-status" id="edit-status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                                <option value="c">Cursando</option>
+                                <option value="p">Pausado</option>
+                                <option value="f">Finalizado</option>
+                            </select>
+                        </div>
+
+                        <!-- Data de Início -->
                         <div>
                             <label for="edit-data_inicio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data de Início</label>
                             <input type="date" name="edit-data_inicio" id="edit-data_inicio" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Digite a data que se iniciou o curso" required />
                         </div>
+
+                        <!-- Data Fim -->
                         <div>
                             <label for="edit-data_fim" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data Fim</label>
                             <input type="date" name="edit-data_fim" id="edit-data_fim" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Digite a data que se iniciou o curso" required />
                         </div>
+
+                        <!-- Editar -->
                         <button id='editar_curso' class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Editar
                         </button>

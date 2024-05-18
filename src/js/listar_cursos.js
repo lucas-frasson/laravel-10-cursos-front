@@ -34,8 +34,26 @@ function listarCursos() {
           var { id, nome, plataforma, data_inicio, data_fim, status } = msg.data[x];
 
           data_fim = data_fim == null ? '-' : data_fim;
-          var status_texto = status == 'c' ? 'Cursando' : 'Finalizado';
-          var cor = status == 'c' ? 'bg-red-500' : 'bg-green-500';
+
+          // switch case status do curso
+          switch(status){
+            case 'c':
+              status_texto = 'Cursando';
+              cor = 'bg-red-500';
+              break;
+            case 'f':
+              status_texto = 'Finalizado';
+              cor = 'bg-green-500';
+              break;
+            case 'p':
+              status_texto = 'Pausado';
+              cor = 'bg-yellow-500';
+              break;
+            default:
+              status_texto = 'Cursando';
+              cor = 'bg-red-500';
+              break;
+          }
 
           tableRows.push(`
           <tr class='flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 bg-white hover:bg-gray-200'>
