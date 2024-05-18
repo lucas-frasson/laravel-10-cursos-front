@@ -59,8 +59,12 @@ $(document).on('click', '#cadastrar_curso', function () {
 
     } else {
 
+    // Pegar email do localStorage
+    var email = localStorage.getItem("userEmail");
+
     // Se nenhum campo estiver vazio, criar o objeto e fazer a requisição AJAX
     var objeto = {
+        email: email,
         nome: curso,
         plataforma: plataforma,
         data_inicio: data_inicio

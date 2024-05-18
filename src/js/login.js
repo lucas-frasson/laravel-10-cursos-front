@@ -69,6 +69,10 @@ $(document).on('click', '#login', function () {
             $("#loading").addClass("hidden");
     
             console.log('Erro');
+
+            // Limpar borda dos inputs
+            $('#email').css('border-color', '#6b7280');
+            $('#password').css('border-color', '#6b7280');
     
             // Mensagem de erro
             Swal.fire({
