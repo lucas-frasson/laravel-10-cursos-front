@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../src/img/favicon.png">
+    <title>Cursos</title>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- Google icons -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../src/css/style.css">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <!-- Javascript Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Verifica auth -->
+    <script src="../src/js/auth.js" defer></script>
+
+    <!-- DataTable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css" />
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+
+    <style>
+        body {
+            background-color: #111827;
+        }
+
+        html,
+        body {
+        height: 100%;
+        }
+
+        #loading {
+            z-index: 100;
+        }
+    
+        @media (min-width: 640px) {
+        table {
+            display: inline-table !important;
+        }
+    
+        thead tr:not(:first-child) {
+            display: none;
+        }
+        }
+    
+        td:not(:last-child) {
+        border-bottom: 0;
+        }
+    
+        th:not(:last-child) {
+        border-bottom: 2px solid rgba(0, 0, 0, .1);
+        }
+
+        /* DataTable */
+        div.dt-container div.dt-layout-cell.dt-start {
+            text-align: left;
+            color: darkgrey;
+        }
+
+        div.dt-container select.dt-input {
+            width: 3.9rem;
+        }
+
+        .dt-search {
+            color: darkgrey !important;
+        }
+
+        div.dt-container .dt-search input {
+            color: #374151 !important;
+            background-color: #F3F4F6;
+            border-radius: 0.5rem !important;
+        }
+
+        .dt-paging-button{
+            background-color: #64748B !important;
+        }
+
+        div.dt-container .dt-paging .dt-paging-button.disabled,div.dt-container .dt-paging .dt-paging-button.disabled:hover,div.dt-container .dt-paging .dt-paging-button.disabled:active {
+            color: #fff !important;
+        }
+
+        div.dt-container .dt-paging .dt-paging-button.current,div.dt-container .dt-paging .dt-paging-button.current:hover {
+            color: #fff !important;
+            background-color: rgba(128, 128, 128, 0.65) !important;
+        }
+
+    </style>
+</head>
+
+<body class="flex">
+
+     <!-- Sidebar -->
+<aside class="h-full w-16 flex flex-col items-center justify-between relative bg-gray-800 text-white">
+    
+    <!-- Home -->
+    <div class="mt-4">
+        <div data-tooltip-target="tooltip-home" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+            <div id="tooltip-home" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Home
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+            <a href="../cursos/">
+                <img src="../src/img/favicon.png" alt="">
+            </a>
+        </div>
+    </div>
+    
+    <!-- Cursos -->
+    <div class="flex flex-col justify-between gap-6">
+        <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+            <div data-tooltip-target="tooltip-cursos" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+                <div id="tooltip-cursos" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Cursos
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <a href="../cursos/">
+                    <img src="../src/img/cursos.png" alt="">
+                </a>
+            </div>
+        </div>
+
+        <!-- Usuários -->
+        <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+            <div data-tooltip-target="tooltip-usuarios" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+                <div id="tooltip-usuarios" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Usuários
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <a href="../usuarios/">
+                    <img src="../src/img/users.png" alt="">
+                </a>
+            </div>
+        </div>
+
+        <!-- Configurações -->
+        <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+            <div data-tooltip-target="tooltip-config" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+                <div id="tooltip-config" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Configurações
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <a href="../config/">
+                    <img src="../src/img/config.png" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sair -->
+    <div class="mb-5">
+        <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+            <div data-tooltip-target="tooltip-sair" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+                <div id="tooltip-sair" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Sair
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <img id="logout" src="../src/img/sair.png" alt="sair">
+            </div>
+        </div>
+    </div>
+</aside>
+
+    <!-- Main -->
+	<div class="container mt-3 ml-6">
+
+        <!-- Loading -->
+        <div id="loading" class="hidden text-center overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-100 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full flex backdrop-filter backdrop-brightness-70">
+            <div role="status">
+                <svg aria-hidden="true" class="inline w-14 h-14 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Novo Usuário -->
+        <div class="flex justify-end items-center mt-4 gap-x-3">
+            <a id='novo_usuario' class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>Novo Usuário</span>
+            </a>
+        </div>
+
+        <!-- Tabela -->
+		<table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5" id="tabela_usuarios">
+			<thead class="text-white">
+				<tr class="bg-slate-500 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+					<th class="p-3 text-left">Nome</th>
+					<th class="p-3 text-left">Email</th>
+					<th class="p-3 text-left" width="110px">Actions</th>
+				</tr>
+			</thead>
+			<tbody class="flex-2 sm:flex-none" id="listar_usuarios">
+			</tbody>
+		</table>
+	</div>
+
+    <!-- Modal Cadastrar Usuário -->
+    <div id="create-modal" tabindex="-1" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full flex backdrop-filter backdrop-brightness-75" aria-modal="true" role="dialog">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Cadastrar Usuário
+                    </h3>
+                    <button id="close_novo_usuario" type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-4 md:p-5">
+                    <div class="space-y-4">
+
+                        <!-- Nome do Usuário -->
+                        <div>
+                            <label for="nome_usuario" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</label>
+                            <input type="text" name="nome_usuario" id="nome_usuario" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Digite o nome do usuário" required />
+                        </div>
+
+                        <!-- E-mail do Usuário -->
+                        <div>
+                            <label for="email_usuario" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">E-mail</label>
+                            <input type="email" name="email_usuario" id="email_usuario" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Digite o e-mail do usuário" required />
+                        </div>
+
+                        <!-- Tipo do Usuário -->
+                        <div>
+                            <label for="tipo_usuario" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo</label>
+                            <select name="tipo_usuario" id="tipo_usuario" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                                <option value="cliente">Cliente</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+
+                        <!-- Cadastrar -->
+                        <button id="cadastrar_usuario" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Cadastrar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <!-- Modal Editar Usuário -->
+    <div id="edit-modal" tabindex="-1" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full flex backdrop-filter backdrop-brightness-75" aria-modal="true" role="dialog">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Editar Usuário
+                    </h3>
+                    <button id="close_show_usuario" type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-4 md:p-5">
+                    <div class="space-y-4">
+
+                        <!-- id do Usuário -->
+                        <input type="hidden" name="hidden_id_usuario" id="hidden_id_usuario">
+
+                        <!-- Nome do Usuário -->
+                        <div>
+                            <label for="edit-nome-usuario" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</label>
+                            <input type="text" name="edit-nome-usuario" id="edit-nome-usuario" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Digite o nome do usuário" required />
+                        </div>
+
+                        <!-- E-mail do Usuário -->
+                        <div>
+                            <label for="edit-email-usuario" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">E-mail</label>
+                            <input type="email" name="edit-email-usuario" id="edit-email-usuario" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Digite o e-mail do usuário" required />
+                        </div>
+
+                        <!-- Tipo do Usuário -->
+                        <div>
+                            <label for="edit-tipo-usuario" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                            <select name="edit-tipo-usuario" id="edit-tipo-usuario" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                                <option value="cliente">Cliente</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+
+                        <!-- Editar -->
+                        <button id='editar_curso' class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Editar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <!-- Modal Deletar Usuário -->
+    <div id="delete-modal" tabindex="-1" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full flex backdrop-filter backdrop-brightness-75" aria-modal="true" role="dialog">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <button id="close_deletar_usuario" type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="p-4 md:p-5 text-center">
+                    <input type="hidden" name="hidden_delete_id_usuario" id="hidden_delete_id_usuario">
+                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                    </svg>
+                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Tem certeza de que deseja excluir este usuario?</h3>
+                    <button id="destroy_usuario" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                       Sim
+                    </button>
+                    <button id="close_deletar_usuario" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                        Não
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Javascript CRUD -->
+    <script src="../src/js/listar_usuarios.js" defer></script>
+    <script src="../src/js/cadastrar_usuario.js"></script>
+    <script src="../src/js/show_usuario.js"></script>
+    <script src="../src/js/editar_usuario.js"></script>
+    <script src="../src/js/deletar_usuario.js"></script>
+    <!-- <script src="../src/js/delete_usuario.js"></script> -->
+    <script src="../src/js/logout.js"></script>
+
+    <!-- Javascript Tailwind -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+</body>
+
+</html>

@@ -11,6 +11,7 @@ function listarCursos() {
   // Transformando objeto em json
   var json = JSON.stringify(objeto);
 
+  // Escondendo os modais
   $("#create-modal").addClass("hidden");
   $("#edit-modal").addClass("hidden");
   $("#delete-modal").addClass("hidden");
