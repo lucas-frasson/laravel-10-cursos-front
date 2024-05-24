@@ -1,18 +1,18 @@
-// Abrir modal Deletar curso
-$(document).on('click', '#deletar_curso', function () {
+// Abrir modal Deletar Usuário
+$(document).on('click', '#deletar_usuario', function () {
     var modal = $("#delete-modal");
   
     $("#delete-modal").removeClass("hidden");
 
     // Pegando id do curso
-    var id_curso = $(this).attr('data-id');
-    $('#hidden_delete_id_curso').val(id_curso);
+    var id_usuario = $(this).attr('data-delete-id');
+    $('#hidden_delete_id_usuario').val(id_usuario);
   
     modal.show();
 });
 
-// Fechar modal Deletar curso
-$(document).on('click', '#close_deletar_curso', function () {
+// Fechar modal Deletar Usuário
+$(document).on('click', '#close_deletar_usuario', function () {
     var modal = $("#delete-modal");
   
     $("#delete-modal").addClass("hidden");
@@ -20,16 +20,16 @@ $(document).on('click', '#close_deletar_curso', function () {
     modal.hide();
 });
 
-// Deletar Curso
-$(document).on('click', '#destroy_curso', function () {
+// Deletar Usuário
+$(document).on('click', '#destroy_usuario', function () {
 
-    var id_curso = $('#hidden_delete_id_curso').val();
+    var id_usuario = $('#hidden_delete_id_usuario').val();
 
     // Pegando token do localStorage
     var TOKEN = localStorage.getItem("userToken");
 
     $.ajax({
-        url: 'http://localhost:8000/cursos/' + id_curso,
+        url: 'http://localhost:8000/usuarios/' + id_usuario,
         type: 'delete',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
         beforeSend: function () {
@@ -49,13 +49,13 @@ $(document).on('click', '#destroy_curso', function () {
         // Mensagem de sucesso
         Swal.fire({
             title: 'Sucesso',
-            text: 'Curso excluído com sucesso!',
+            text: 'Usuário excluído com sucesso!',
             icon: 'success',
             confirmButtonText: 'Ok',
             confirmButtonColor: '#581C87'
         })
 
-        listarCursos();
+        listarUsuarios();
 
     })
     .fail(function (jqXHR, textStatus, msg) {
@@ -68,7 +68,7 @@ $(document).on('click', '#destroy_curso', function () {
         // Mensagem de erro
         Swal.fire({
             title: 'Erro',
-            text: 'Erro ao excluir curso!',
+            text: 'Erro ao excluir usuário!',
             icon: 'error',
             confirmButtonText: 'Ok',
             confirmButtonColor: '#581C87'
