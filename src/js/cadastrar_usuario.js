@@ -122,7 +122,7 @@ $(document).on('click', '#cadastrar_usuario', function () {
                 // Verificando se o status http code é 422
                 if (jqXHR.status === 422) {
                     var response = JSON.parse(jqXHR.responseText);
-                    // Mensagem de erro se já existir um curso com o mesmo nome
+                    // Mensagem de erro se já existir um usuário com o mesmo email
                     Swal.fire({
                         title: 'Erro',
                         text: response.error,

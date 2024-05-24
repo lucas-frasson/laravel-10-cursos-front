@@ -1,14 +1,12 @@
-// Editar Curso
-$(document).on('click', '#editar_curso', function () {
-    var id_curso = $('#hidden_id_curso').val();
-    var curso = $('#edit-curso').val();
-    var plataforma = $('#edit-plataforma').val();
-    var data_inicio = $('#edit-data_inicio').val();
-    var data_fim = $('#edit-data_fim').val();
-    var status = $('#edit-status').val();
+// Editar Usuário
+$(document).on('click', '#editar_usuario', function () {
+    var id_usuario = $('#hidden_id_usuario').val();
+    var name = $('#edit-nome-usuario').val();
+    var email = $('#edit-email-usuario').val();
+    // var tipo = $('#edit-tipo-usuario').val();
 
     // Verificar se algum dos campos está vazio
-    if (curso.trim() === '' || plataforma.trim() === '' || status.trim() === '' || data_inicio.trim() === ''){
+    if (name.trim() === '' || email.trim() === ''){
 
         // Mensagem de alerta
         Swal.fire({
@@ -20,41 +18,22 @@ $(document).on('click', '#editar_curso', function () {
         });
 
         // Pintar borda dos inputs curso, plataforma e data_inicio de vermelho se estiverem vazios
-        if (curso.trim() === '') {
-            $('#edit-curso').css('border-color','red');
+        if (name.trim() === '') {
+            $('#edit-nome-usuario').css('border-color','red');
         }
-        if (plataforma.trim() === '') {
-            $('#edit-plataforma').css('border-color','red');
+        if (email.trim() === '') {
+            $('#edit-email-usuario').css('border-color','red');
         }
-        if (status.trim() === '') {
-            $('#edit-status').css('border-color','red');
-        }
-        if (data_inicio.trim() === '') {
-            $('#edit-data_inicio').css('border-color','red');
-        }
+        // if (tipo.trim() === '') {
+        //     $('#edit-tipo-usuario').css('border-color','red');
+        // }
     } else {
-
-        if(status == 'f' && data_fim == ''){
-            Swal.fire({
-                title: 'Atenção',
-                text: 'Informe a data fim do curso!',
-                icon: 'info',
-                confirmButtonText: 'Ok',
-                confirmButtonColor: '#581C87'
-            });
-
-            $('#edit-data_fim').css('border-color','red');
-
-            return false;
-        }
 
         // Se nenhum campo estiver vazio, criar o objeto e fazer a requisição AJAX
         var objeto = {
-            nome: curso,
-            plataforma: plataforma,
-            data_inicio: data_inicio,
-            data_fim: data_fim,
-            status: status,
+            name: name,
+            email: email,
+            // tipo: tipo,
         };
 
         // Transformando objeto em json
@@ -64,7 +43,7 @@ $(document).on('click', '#editar_curso', function () {
         var TOKEN = localStorage.getItem("userToken");
 
         $.ajax({
-            url: 'http://localhost:8000/cursos/' + id_curso,
+            url: 'http://localhost:8000/usuarios/' + id_usuario,
             type: 'patch',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
             data: json,
@@ -87,29 +66,27 @@ $(document).on('click', '#editar_curso', function () {
             // Mensagem de sucesso
             Swal.fire({
                 title: 'Sucesso',
-                text: 'Curso editado com sucesso!',
+                text: 'Usuário editado com sucesso!',
                 icon: 'success',
                 confirmButtonText: 'Ok',
                 confirmButtonColor: '#581C87'
             })
 
-            // Limpar borda do input edit-data_fim
-            $('#edit-data_fim').css('border-color', '#ced4da');
-
-            listarCursos();
+            listarUsuarios();
 
         })
         .fail(function (jqXHR, textStatus, msg) {
 
             $("#loading").addClass("hidden");
-
+    
             console.log('Erro');
             console.log(msg);
+            console.log(jqXHR);
 
             // Verificando se o status http code é 422
             if (jqXHR.status === 422) {
                 var response = JSON.parse(jqXHR.responseText);
-                // Mensagem de erro se já existir um curso com o mesmo nome
+                // Mensagem de erro se já existir um usuário com o mesmo email
                 Swal.fire({
                     title: 'Erro',
                     text: response.error,
@@ -121,7 +98,7 @@ $(document).on('click', '#editar_curso', function () {
                 // Trata outros possíveis erros
                 Swal.fire({
                     title: 'Erro',
-                    text: 'Erro ao cadastrar curso!',
+                    text: 'Erro ao editar usuário! Verifique as informações digitadas!',
                     icon: 'error',
                     confirmButtonText: 'Ok',
                     confirmButtonColor: '#581C87'
