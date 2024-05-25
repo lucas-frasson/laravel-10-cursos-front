@@ -52,6 +52,7 @@ function listarUsuarios() {
 
       // Inicializar DataTables após carregar os dados
       $('#tabela_usuarios').DataTable({
+        "searching": false,
         "retrieve": true,
         "paging": false,
         "language": {
