@@ -29,12 +29,15 @@ function listarUsuarios() {
       var tableRows = []; // Array para armazenar todas as linhas da tabela
 
       while (x < qtd) {
-          var { id, name, email } = msg.data[x];
+          var { id, name, email, type } = msg.data[x];
+
+          type = (type == "cliente") ? 'Cliente' : 'Admin';
 
           tableRows.push(`
           <tr class='flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 bg-white hover:bg-gray-200'>
               <td class='border-grey-light p-3'>${name}</td>
               <td class='border-grey-light p-3'>${email}</td>
+              <td class='border-grey-light p-3'>${type}</td>
               <td class='border-grey-light p-3 flex gap-4 text-xl'>
                   <i id='show_usuario' data-id=${id} class='fa-solid fa-pen-to-square cursor-pointer text-neutral-500 hover:text-neutral-900'></i>
                   <i id='deletar_usuario' data-delete-id=${id} class='fa-solid fa-trash text-red-600 hover:text-red-700 cursor-pointer btn_delete'></i>

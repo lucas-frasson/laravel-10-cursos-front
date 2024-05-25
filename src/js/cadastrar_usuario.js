@@ -30,10 +30,10 @@ $(document).on('click', '#close_novo_usuario', function () {
 $(document).on('click', '#cadastrar_usuario', function () {
     var nome_usuario = $('#nome_usuario').val();
     var email_usuario = $('#email_usuario').val();
-    // var tipo_usuario = $('#tipo_usuario').val();
+    var tipo_usuario = $('#tipo_usuario').val();
 
     // Verificar se algum dos campos está vazio
-    if (nome_usuario.trim() === '' || email_usuario.trim() === ''){
+    if (nome_usuario.trim() === '' || email_usuario.trim() === '' || tipo_usuario.trim() === ''){
 
         // Mensagem de alerta
         Swal.fire({
@@ -53,9 +53,9 @@ $(document).on('click', '#cadastrar_usuario', function () {
             $('#email_usuario').css('border-color','red');
         }
 
-        // if (tipo_usuario.trim() === ''){
-        //     $('#tipo_usuario').css('border-color','red');
-        // }
+        if (tipo_usuario.trim() === ''){
+            $('#tipo_usuario').css('border-color','red');
+        }
     } else {
 
         // Pegar email do localStorage
@@ -66,7 +66,7 @@ $(document).on('click', '#cadastrar_usuario', function () {
             // email: email,
             name: nome_usuario,
             email: email_usuario,
-            // tipo: tipo_usuario
+            type: tipo_usuario
         };
     
         // Transformando objeto em json

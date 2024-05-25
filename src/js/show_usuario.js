@@ -26,11 +26,11 @@ $(document).on('click', '#show_usuario', function () {
   
         // console.log(msg);
 
-        var { id, name, email } = msg.data;
+        var { id, name, email, type } = msg.data;
 
         $('#edit-nome-usuario').val(name);
         $('#edit-email-usuario').val(email);
-        // $('#edit-tipo-usuario').val(tipo);
+        $('#edit-tipo-usuario').val(type);
     })
     .fail(function (jqXHR, textStatus, msg) {
 

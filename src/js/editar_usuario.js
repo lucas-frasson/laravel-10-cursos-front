@@ -3,10 +3,10 @@ $(document).on('click', '#editar_usuario', function () {
     var id_usuario = $('#hidden_id_usuario').val();
     var name = $('#edit-nome-usuario').val();
     var email = $('#edit-email-usuario').val();
-    // var tipo = $('#edit-tipo-usuario').val();
+    var tipo = $('#edit-tipo-usuario').val();
 
     // Verificar se algum dos campos está vazio
-    if (name.trim() === '' || email.trim() === ''){
+    if (name.trim() === '' || email.trim() === '' || tipo.trim() === ''){
 
         // Mensagem de alerta
         Swal.fire({
@@ -24,16 +24,16 @@ $(document).on('click', '#editar_usuario', function () {
         if (email.trim() === '') {
             $('#edit-email-usuario').css('border-color','red');
         }
-        // if (tipo.trim() === '') {
-        //     $('#edit-tipo-usuario').css('border-color','red');
-        // }
+        if (tipo.trim() === '') {
+            $('#edit-tipo-usuario').css('border-color','red');
+        }
     } else {
 
         // Se nenhum campo estiver vazio, criar o objeto e fazer a requisição AJAX
         var objeto = {
             name: name,
             email: email,
-            // tipo: tipo,
+            type: tipo,
         };
 
         // Transformando objeto em json
