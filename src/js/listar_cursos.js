@@ -3,9 +3,18 @@ function listarCursos() {
   // Pegar email do localStorage
   var email = localStorage.getItem("userEmail");
 
+  // Pegando valores dos inputs pesquisar e tipo
+  var pesquisar = $("#pesquisar").val();
+  var status_select = $("#status").val();
+
+  // Substituir / por - na variavel pesquisar para pesquisar data
+  pesquisar = pesquisar.replace(/\//g, "-");
+
   // Cria objeto com o email do usuário
   var objeto = {
-    email: email
+    email: email,
+    pesquisar: pesquisar,
+    status: status_select
   };
 
   // Transformando objeto em json
@@ -26,7 +35,7 @@ function listarCursos() {
     data: json,
     beforeSend: function () {
       console.log('ajax...');
-      $("#loading").removeClass("hidden");
+      // $("#loading").removeClass("hidden");
     },
   })
     .done(function (msg) {
@@ -86,6 +95,7 @@ function listarCursos() {
 
       // Inicializar DataTables após carregar os dados
       $('#tabela_cursos').DataTable({
+        "searching": false,
         "retrieve": true,
         "paging": false,
         "language": {
@@ -112,6 +122,13 @@ function listarCursos() {
             }
         }
       });
+
+      // Se não encontrar resultados
+      if(qtd == 0){
+        var text = "Nenhum curso encontrado";
+
+        $("#listar_cursos").html(text);
+      }
     })
     .fail(function (jqXHR, textStatus, msg) {
 
@@ -128,3 +145,14 @@ function listarCursos() {
 
 // Listar cursos
 listarCursos();
+
+// onkeyup no input pesquisar
+$("#pesquisar").on("keyup", function () {
+  listarCursos();
+});
+
+// onchange no select status
+$("#status").on("change", function () {
+  listarCursos();
+});
+

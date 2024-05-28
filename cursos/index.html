@@ -201,6 +201,20 @@
             </a>
         </div>
 
+        <div class="flex justify-end items-center mt-4 mb-2 gap-x-3">
+            <!-- Pesquisar -->
+            <label for="pesquisar" class="block mb-2 text-lg font-light text-white dark:text-white">Pesquisar</label>
+            <input type="text" id="pesquisar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-1/5 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+            <!-- Select status -->
+            <select id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-1/6 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected value="">Todos</option>
+                <option value="c">Cursando</option>
+                <option value="p">Pausado</option>
+                <option value="f">Finalizado</option>
+            </select>
+        </div>
+
         <!-- Tabela -->
 		<table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5" id="tabela_cursos">
 			<thead class="text-white">
