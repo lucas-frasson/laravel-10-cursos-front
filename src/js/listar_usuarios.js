@@ -5,16 +5,29 @@ function listarUsuarios() {
   $("#edit-modal").addClass("hidden");
   $("#delete-modal").addClass("hidden");
 
+  // Pegando valores dos inputs pesquisar e tipo
+  var nome_email = $("#pesquisar").val();
+  var type = $("#tipo").val();
+
+  var objeto = {
+    nome_email: nome_email,
+    type: type,
+  };
+
+  // Transformando objeto em json
+  var json = JSON.stringify(objeto);
+
   // Pegando token do localStorage
   var TOKEN = localStorage.getItem("userToken");
 
   $.ajax({
-    url: 'http://localhost:8000/usuarios/',
-    type: 'get',
+    url: 'http://localhost:8000/index_usuarios/',
+    type: 'post',
     headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
+    data: json,
     beforeSend: function () {
       console.log('ajax...');
-      $("#loading").removeClass("hidden");
+      // $("#loading").removeClass("hidden");
     },
   })
     .done(function (msg) {
@@ -79,6 +92,13 @@ function listarUsuarios() {
             }
         }
       });
+
+      // Se não encontrar resultados
+      if(qtd == 0){
+        var text = "Nenhum usuário encontrado";
+
+        $("#listar_usuarios").html(text);
+      }
     })
     .fail(function (jqXHR, textStatus, msg) {
 
@@ -93,5 +113,16 @@ function listarUsuarios() {
     })
 }
 
-// Listar usuários
-listarUsuarios();
+  // Listar usuários
+  listarUsuarios();
+
+  // onkeyup no input pesquisar
+  $("#pesquisar").on("keyup", function () {
+    listarUsuarios();
+  });
+
+  // onchange no select tipo
+  $("#tipo").on("change", function () {
+    listarUsuarios();
+  });
+ 
