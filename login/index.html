@@ -7,6 +7,9 @@
     <link rel="icon" type="image/x-icon" href="../src/img/favicon.png">
     <title>Login - Cursos</title>
 
+    <!-- Font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -38,6 +41,25 @@
         #loading {
             z-index: 100;
         }
+
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-container input[type="password"],
+        .password-container input[type="text"] {
+            width: 100%;
+            padding-right: 40px;
+        }
+
+        .password-container .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -58,11 +80,15 @@
 			<img src="../src/img/favicon.png" alt="logo" class="w-40">
 			<p class="mb-5 text-3xl text-gray-600 font-bold mt-2">Meus Cursos</p>
 			<input type="email" id="email" name="email" class="mb-5 p-3 w-80 focus:border-purple-800 rounded border-2 outline-none" placeholder="Email" required>
-			<input type="password" id="password" name="password" class="mb-5 p-3 w-80 focus:border-purple-800 rounded border-2 outline-none" placeholder="Password" required>
+			<div class="password-container mb-5 w-80">
+                <input type="password" id="password" name="password" class="p-3 w-full focus:border-purple-800 rounded border-2 outline-none" placeholder="Password" required>
+                <i class="far fa-eye toggle-password"></i>
+            </div>
 			<button class="bg-purple-800 hover:bg-purple-900 text-white font-bold p-2 rounded w-80" id="login"><span>Entrar</span></button>
-		</div>
+        </div>
 	</div>
 
     <script src="../src/js/login.js"></script>
+    <script src="../src/js/toggle-password.js"></script>
 </body>
 </html>
