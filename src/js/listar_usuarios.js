@@ -5,11 +5,15 @@ function listarUsuarios() {
   $("#edit-modal").addClass("hidden");
   $("#delete-modal").addClass("hidden");
 
+  // Pegar email do localStorage
+  var email = localStorage.getItem("userEmail");
+
   // Pegando valores dos inputs pesquisar e tipo
   var nome_email = $("#pesquisar").val();
   var type = $("#tipo").val();
 
   var objeto = {
+    email: email,
     nome_email: nome_email,
     type: type,
   };

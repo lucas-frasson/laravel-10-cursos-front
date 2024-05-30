@@ -25,12 +25,24 @@ $(document).on('click', '#destroy_usuario', function () {
 
     var id_usuario = $('#hidden_delete_id_usuario').val();
 
+    // Pegar email do localStorage
+    var email = localStorage.getItem("userEmail");
+
+    // Cria objeto com o email do usuário
+    var objeto = {
+        email: email,
+    };
+
+    // Transformando objeto em json
+    var json = JSON.stringify(objeto);
+
     // Pegando token do localStorage
     var TOKEN = localStorage.getItem("userToken");
 
     $.ajax({
-        url: 'http://localhost:8000/usuarios/' + id_usuario,
-        type: 'delete',
+        url: 'http://localhost:8000/destroy_usuario/' + id_usuario,
+        type: 'post',
+        data: json,
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
         beforeSend: function () {
             $("#loading").removeClass("hidden");

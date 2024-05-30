@@ -10,7 +10,7 @@ function listarCursos() {
   // Substituir / por - na variavel pesquisar para pesquisar data
   pesquisar = pesquisar.replace(/\//g, "-");
 
-  // Cria objeto com o email do usuário
+  // Cria objeto
   var objeto = {
     email: email,
     pesquisar: pesquisar,

@@ -29,8 +29,12 @@ $(document).on('click', '#editar_usuario', function () {
         }
     } else {
 
+        // Pegar email do localStorage
+        var email_usuario = localStorage.getItem("userEmail");
+
         // Se nenhum campo estiver vazio, criar o objeto e fazer a requisição AJAX
         var objeto = {
+            email_usuario: email_usuario,
             name: name,
             email: email,
             type: tipo,
@@ -43,10 +47,10 @@ $(document).on('click', '#editar_usuario', function () {
         var TOKEN = localStorage.getItem("userToken");
 
         $.ajax({
-            url: 'http://localhost:8000/usuarios/' + id_usuario,
-            type: 'patch',
-            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
+            url: 'http://localhost:8000/update_usuario/' + id_usuario,
+            type: 'post',
             data: json,
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
             beforeSend: function () {
                 $("#loading").removeClass("hidden");
             },

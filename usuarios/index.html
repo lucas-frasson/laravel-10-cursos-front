@@ -138,7 +138,7 @@
         </div>
 
         <!-- Usuários -->
-        <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
+        <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear hidden" id="link-usuarios">
             <div data-tooltip-target="tooltip-usuarios" class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 hover:duration-300 hover:ease-linear">
                 <div id="tooltip-usuarios" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                     Usuários
@@ -365,6 +365,7 @@
 
     <!-- Javascript CRUD -->
     <script src="../src/js/listar_usuarios.js" defer></script>
+    <script src="../src/js/verificar_admin.js" defer></script>
     <script src="../src/js/cadastrar_usuario.js"></script>
     <script src="../src/js/show_usuario.js"></script>
     <script src="../src/js/editar_usuario.js"></script>

@@ -59,13 +59,13 @@ $(document).on('click', '#cadastrar_usuario', function () {
     } else {
 
         // Pegar email do localStorage
-        // var email = localStorage.getItem("userEmail");
+        var email = localStorage.getItem("userEmail");
     
         // Se nenhum campo estiver vazio, criar o objeto e fazer a requisição AJAX
         var objeto = {
-            // email: email,
+            email: email,
             name: nome_usuario,
-            email: email_usuario,
+            email_usuario: email_usuario,
             type: tipo_usuario
         };
     
@@ -130,6 +130,15 @@ $(document).on('click', '#cadastrar_usuario', function () {
                         confirmButtonText: 'Ok',
                         confirmButtonColor: '#581C87'
                     });
+
+                    // Limpar campos
+                    $('#nome_usuario').val('');
+                    $('#email_usuario').val('');
+                    $('#tipo_usuario').val('cliente');
+
+                    var modal = $("#create-modal");
+      
+                    modal.hide();
                 } else {
                     // Trata outros possíveis erros
                     Swal.fire({
