@@ -16,7 +16,7 @@ $(document).on('click', '#show_curso', function () {
         type: 'get',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
         beforeSend: function () {
-          console.log('ajax...');
+        //   console.log('ajax...');
           $("#loading").removeClass("hidden");
         },
       })

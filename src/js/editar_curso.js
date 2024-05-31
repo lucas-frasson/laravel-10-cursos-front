@@ -48,8 +48,12 @@ $(document).on('click', '#editar_curso', function () {
             return false;
         }
 
+        // Pegar email do localStorage
+        var email = localStorage.getItem("userEmail");
+
         // Se nenhum campo estiver vazio, criar o objeto e fazer a requisição AJAX
         var objeto = {
+            email: email,
             nome: curso,
             plataforma: plataforma,
             data_inicio: data_inicio,
@@ -76,7 +80,7 @@ $(document).on('click', '#editar_curso', function () {
 
             $("#loading").addClass("hidden");
 
-            console.log(msg);
+            // console.log(msg);
 
             var modal = $("#edit-modal");
     

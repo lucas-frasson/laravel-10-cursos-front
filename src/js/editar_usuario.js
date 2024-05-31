@@ -59,7 +59,7 @@ $(document).on('click', '#editar_usuario', function () {
 
             $("#loading").addClass("hidden");
 
-            console.log(msg);
+            // console.log(msg);
 
             var modal = $("#edit-modal");
     

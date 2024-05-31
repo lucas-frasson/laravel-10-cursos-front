@@ -20,7 +20,7 @@ function verificaAdmin() {
     headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
     data: json,
     beforeSend: function () {
-      console.log('ajax...');
+      // console.log('ajax...');
       // $("#loading").removeClass("hidden");
     },
   })
